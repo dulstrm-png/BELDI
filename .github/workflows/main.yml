@@ -74,6 +74,12 @@ jobs:
 
           echo "PROJECT_DIR=${SETTINGS_FILE%/settings.gradle}" >> $GITHUB_ENV
 
+      
+      - name: Fix Java Kotlin JVM Target
+        run: |
+          sed -i 's/JavaVersion.VERSION_1_8/JavaVersion.VERSION_17/g' "$PROJECT_DIR/app/build.gradle"
+          sed -i 's/JavaVersion.VERSION_1_8/JavaVersion.VERSION_17/g' "$PROJECT_DIR/app/build.gradle"
+          
       - name: Build APK
         run: |
           cd "$PROJECT_DIR"
